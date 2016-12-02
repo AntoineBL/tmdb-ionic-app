@@ -2,11 +2,21 @@ ion-view.view-home(view-title="Home du génie")
   ion-header.bar-subheader.item-input-inset
     label.item-input-wrapper
       i.icon.ion-ios-search.placeholder-icon
-      input(type="search", placeholder="Rechercher")
-    button.button.button-clear.button-positive OK
+      input(
+      type="search",
+      ng-model="search.query",
+      placeholder="Rechercher")
+    button.button.button-clear.button-positive(
+      ng-disabled="search.query.length < 3",
+      on-tap="homeController.search()") OK
   ion-content.has-subheader
     ion-list
-      ion-item.item-icon-right(ui-state="STATE_DETAILS") 
-        | Go to details
+      ion-item(ng-if="search.results.length <= 0 ")
+        | No result
+      ion-item(
+        ng-repeat="result in search.results", 
+        ui-state-params="{id: result.id}",
+        ui-state="STATE_DETAILS")
+        | {{result.title}}
         i.icon.ion-chevron-right 
 

@@ -6,14 +6,24 @@
 
   var STATE_DETAILS = 'states.details';
 
+  function movieDataResolver($stateParams, statesService){
+    return statesService.getMovie($stateParams.id);
+  }
+
   function config($stateProvider) {
     $stateProvider.state(STATE_DETAILS, {
       data: { module: module, navBar: true },
-      url: '/details',
+      url: '/details/:id',
       views: {
         'content-smartphone': {
           controller: 'detailsController as detailsController'
         }
+      },
+      resolve: {
+        movieData: [
+        '$stateParams',
+        'statesService',
+         movieDataResolver]
       }
     });
   }

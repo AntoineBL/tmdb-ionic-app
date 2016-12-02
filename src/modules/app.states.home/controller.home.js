@@ -4,13 +4,24 @@
 (function (module) {
   'use strict';
 
-  function HomeController($scope) {
+  function HomeController($scope, statesService) {
     var controller = this;
 
+    $scope.search = { query: '', results: [] };
+
+	controller.search = function(){
+		statesService.search($scope.search.query).then(function(results){
+    		$scope.search.results = results;
+    	});
+	};
+
+
+    
   }
 
   module.controller('homeController', [
     '$scope',
+    'statesService',
     HomeController
   ]);
 

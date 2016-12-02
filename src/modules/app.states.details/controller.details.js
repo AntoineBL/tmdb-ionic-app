@@ -4,13 +4,15 @@
 (function (module) {
   'use strict';
 
-  function DetailsController($scope) {
+  function DetailsController($scope, movieData) {
     var controller = this;
 
+    $scope.movieData = movieData;
   }
 
   module.controller('detailsController', [
     '$scope',
+    'movieData',
     DetailsController
   ]);
 
