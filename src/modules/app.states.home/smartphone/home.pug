@@ -1,2 +1,12 @@
 ion-view.view-home(view-title="Home du génie")
-  ion-content Home
+  ion-header.bar-subheader.item-input-inset
+    label.item-input-wrapper
+      i.icon.ion-ios-search.placeholder-icon
+      input(type="search", placeholder="Rechercher")
+    button.button.button-clear.button-positive OK
+  ion-content.has-subheader
+    ion-list
+      ion-item.item-icon-right(ui-state="STATE_DETAILS") 
+        | Go to details
+        i.icon.ion-chevron-right 
+
