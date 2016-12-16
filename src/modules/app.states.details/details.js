@@ -6,7 +6,7 @@
 
   var STATE_DETAILS = 'states.details';
 
-  function movieDataResolver($stateParams, statesService){
+  function movieDataResolver($stateParams, statesService) {
     return statesService.getMovie($stateParams.id);
   }
 
@@ -20,10 +20,7 @@
         }
       },
       resolve: {
-        movieData: [
-        '$stateParams',
-        'statesService',
-         movieDataResolver]
+        movieData: ['$stateParams', 'statesService', movieDataResolver]
       }
     });
   }
